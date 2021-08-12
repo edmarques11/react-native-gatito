@@ -5,7 +5,7 @@ export default function Item({ nome, preco, descricao }) {
 
   return <>
     <Text>{nome}</Text>
-    <Text>{preco}</Text>
     <Text>{descricao}</Text>
+    <Text>{preco}</Text>
   </>
 }
