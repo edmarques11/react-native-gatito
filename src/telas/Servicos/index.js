@@ -25,7 +25,6 @@ const servicos = [
 export default function Servicos() {
   return <SafeAreaView>
     <StatusBar />
-    <Text>Serviços!</Text>
     <FlatList
       data={servicos}
       renderItem={({ item }) => <Item {...item} />}
