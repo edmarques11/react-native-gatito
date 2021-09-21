@@ -41,7 +41,7 @@ export default function Item({ nome, preco, descricao }) {
             <Text style={estilos.preco}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)}</Text>
           </View>
         </View>
-        <Botao valor="Adicionar" acao={() => { }} />
+        <Botao valor="Adicionar no carrinho" acao={() => { }} />
       </View>
     }
     <View style={estilos.divisor} />
