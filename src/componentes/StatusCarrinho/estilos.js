@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { cores } from '../../estilos'
+import { StyleSheet } from 'react-native';
+import { cores } from '../../estilos';
 
 export default StyleSheet.create({
   conteudo: {
@@ -8,25 +8,24 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     flexWrap: 'wrap',
-    padding: 24
+    padding: 24,
   },
   total: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   descricao: {
-    fontSize: 18,
+    fontSize: 16,
+    color: cores.claro,
     fontWeight: 'bold',
-    marginVertical: 6,
-    color: cores.laranja
   },
   valor: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginVertical: '6',
-    color: cores.laranja
+    marginVertical: 6,
+    color: cores.laranja,
   },
   botao: {
     flexGrow: 1,
-    alignItems: 'flex-end'
-  }
-})
+    alignItems: 'flex-end',
+  },
+});
