@@ -6,25 +6,18 @@ import estilos from "./estilos";
 import { actions } from "../../../store/carrinho";
 import { useDispatch } from "react-redux";
 
-export default function Item({
-  id,
-  nome,
-  preco,
-  descricao,
-  quantidade: quantidadeInicial,
-}) {
+export default function Item({ id, nome, preco, descricao, quantidade }) {
   const dispatch = useDispatch();
 
-  const [quantidade, setQuantidade] = useState(quantidadeInicial);
-  const [total, setTotal] = useState(preco * quantidadeInicial);
+  const total = preco * quantidade;
 
   const atualizaQuantidadeTotal = (novaQuantidade) => {
-    setQuantidade(novaQuantidade);
+    quantidade = novaQuantidade;
     calculaTotal(novaQuantidade);
   };
 
   const calculaTotal = (novaQuantidade) => {
-    setTotal(novaQuantidade * preco);
+    total = novaQuantidade * preco;
   };
 
   return (

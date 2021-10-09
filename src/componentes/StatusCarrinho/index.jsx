@@ -2,8 +2,12 @@ import React from "react";
 import { Text, View } from "react-native";
 import Botao from "../Botao";
 import estilos from "./estilos";
+import { useDispatch } from "react-redux";
+import { actions } from "../../store/carrinho";
 
 export default function StatusCarrinho({ total }) {
+  const dispatch = useDispatch();
+
   return (
     <View style={estilos.conteudo}>
       <View style={estilos.total}>
@@ -16,7 +20,11 @@ export default function StatusCarrinho({ total }) {
         </Text>
       </View>
       <View style={estilos.botao}>
-        <Botao valor="Concluir Pedido" invertido />
+        <Botao
+          valor="Concluir Pedido"
+          invertido
+          acao={() => dispatch(actions.changeFinishRequest())}
+        />
       </View>
     </View>
   );

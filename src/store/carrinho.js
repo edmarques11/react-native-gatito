@@ -3,30 +3,29 @@ import { createSlice } from "@reduxjs/toolkit";
 export const carrinho = createSlice({
   name: 'carrinho',
   initialState: {
-    items: []
+    items: [],
+    finishRequest: false
   },
   reducers: {
     add(state, action) {
-      const itemExists = state.items.findIndex((item) => item.id === action.payload.id)
+      const indexItemExists = state.items.findIndex((item) => item.id === action.payload.id)
 
-      if (itemExists >= 0) {
-        state.items[itemExists].quantidade += action.payload.quantidade
+      if (indexItemExists >= 0) {
+        state.items[indexItemExists].quantidade += action.payload.quantidade
       } else {
         state.items.push(action.payload)
       }
+      state.finishRequest = false
     },
     remove(state, { payload }) {
-      const indexRemove = state.items.findIndex(item => {
-        return item.id === payload
-      })
+      const arrayFilter = state.items.filter(el => el.id !== payload)
+      state.items = arrayFilter
+    },
+    changeFinishRequest(state) {
+      state.finishRequest = !state.finishRequest
 
-      if (indexRemove >= 0) {
-        if (state.items.length === 1) {
-          state.items = []
-        } else {
-          state.items = state.items.splice(indexRemove, 1)
-        }
-        console.log(state.items)
+      if (state.finishRequest) {
+        state.items = []
       }
     }
   }
