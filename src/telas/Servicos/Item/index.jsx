@@ -3,8 +3,10 @@ import { Text, TouchableOpacity, View } from "react-native";
 import Botao from "../../../componentes/Botao";
 import CampoInteiro from "../../../componentes/CampoInteiro";
 import estilos from "./estilos";
+import { actions } from "../../../store/carrinho";
+import { useDispatch } from "react-redux";
 
-export default function Item({ nome, preco, descricao }) {
+export default function Item({ id, nome, preco, descricao }) {
   const [quantidade, setQuantidade] = useState(1);
   const [total, setTotal] = useState(preco);
   const [expandir, setExpandir] = useState(false);
@@ -21,6 +23,12 @@ export default function Item({ nome, preco, descricao }) {
   const inverteExpandir = () => {
     setExpandir(!expandir);
     atualizaQuantidadeTotal(1);
+  };
+
+  const dispatch = useDispatch();
+  const currentItem = Object.assign({}, { id, nome, preco, descricao, quantidade });
+  const adicionaNoCarrinho = () => {
+    dispatch(actions.add(currentItem));
   };
 
   return (
@@ -56,7 +64,10 @@ export default function Item({ nome, preco, descricao }) {
               </Text>
             </View>
           </View>
-          <Botao valor="Adicionar ao carrinho" acao={() => {}} />
+          <Botao
+            valor="Adicionar ao carrinho"
+            acao={() => adicionaNoCarrinho()}
+          />
         </View>
       )}
       <View style={estilos.divisor} />

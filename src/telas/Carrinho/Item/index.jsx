@@ -3,13 +3,18 @@ import { Text, View } from "react-native";
 import Botao from "../../../componentes/Botao";
 import CampoInteiro from "../../../componentes/CampoInteiro";
 import estilos from "./estilos";
+import { actions } from "../../../store/carrinho";
+import { useDispatch } from "react-redux";
 
 export default function Item({
+  id,
   nome,
   preco,
   descricao,
   quantidade: quantidadeInicial,
 }) {
+  const dispatch = useDispatch();
+
   const [quantidade, setQuantidade] = useState(quantidadeInicial);
   const [total, setTotal] = useState(preco * quantidadeInicial);
 
@@ -54,7 +59,10 @@ export default function Item({
             </Text>
           </View>
         </View>
-        <Botao valor="Remover do carrinho" acao={() => {}} />
+        <Botao
+          valor="Remover do carrinho"
+          acao={() => dispatch(actions.remove(id))}
+        />
       </View>
       <View style={estilos.divisor} />
     </>
