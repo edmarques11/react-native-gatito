@@ -26,7 +26,10 @@ export default function Item({ id, nome, preco, descricao }) {
   };
 
   const dispatch = useDispatch();
-  const currentItem = Object.assign({}, { id, nome, preco, descricao, quantidade });
+  const currentItem = Object.assign(
+    {},
+    { id, nome, preco, descricao, quantidade }
+  );
   const adicionaNoCarrinho = () => {
     dispatch(actions.add(currentItem));
   };
@@ -65,6 +68,7 @@ export default function Item({ id, nome, preco, descricao }) {
             </View>
           </View>
           <Botao
+            disabled={quantidade <= 0}
             valor="Adicionar ao carrinho"
             acao={() => adicionaNoCarrinho()}
           />

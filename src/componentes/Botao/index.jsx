@@ -8,11 +8,16 @@ export default function Botao({
   valor,
   acao,
   estilos,
+  disabled = false,
 }) {
   const estilosPadrao = funcaoEstilosPadrao(pequeno, invertido);
 
   return (
-    <TouchableOpacity onPress={acao} style={[estilosPadrao.botao, estilos]}>
+    <TouchableOpacity
+      disabled={disabled}
+      onPress={acao}
+      style={[estilosPadrao.botao, estilos]}
+    >
       <Text style={estilosPadrao.valor}>{valor}</Text>
     </TouchableOpacity>
   );
